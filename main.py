@@ -66,8 +66,9 @@ def printLogs(DB_Settings: dict):
                 '{:.5}'.format(str(row[0])).ljust(5),
                 '{:.20}'.format(str(row[1])).ljust(20),
                 '{:.10}'.format(str(row[2])).ljust(10),
-                '{:.19}'.format(str(row[3])).ljust(19),
-                '{:.19}'.format(str(row[4])).ljust(19)
+                '{:.10}'.format(str(row[3])).ljust(10),
+                '{:.19}'.format(str(row[4])).ljust(19),
+                '{:.19}'.format(str(row[5])).ljust(19)
             )
 
 def printMenu(menu: dict, description: str = ""):

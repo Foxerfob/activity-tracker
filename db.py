@@ -36,11 +36,23 @@ def getCategories(DB_Settings: dict):
 
 def getLogs(DB_Settings: dict, sqlConditions: list):
     sql = f"""
-    SELECT logid, logdescription, categories.categoryname, logstarttime, logendtime FROM logs
+    SELECT 
+        logs.logid,
+        logs.logdescription,
+        categories.categoryname,
+        TO_CHAR(
+            logs.logendtime - logs.logstarttime,
+            'HH24:MI:SS'
+        ) AS duration,
+        logs.logstarttime,
+        logs.logendtime 
+        FROM logs
     JOIN 
         categories ON logs.categoryid = categories.categoryid
     {"WHERE" if len(sqlConditions) else ''}
         {' AND '.join(sqlConditions)}
+    ORDER BY
+        logs.logid
     ;
     """
 
